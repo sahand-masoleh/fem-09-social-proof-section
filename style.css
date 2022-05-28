@@ -1,30 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap");
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "League Spartan", sans-serif;
 }
 
 body {
 	/* Primary */
-	--very-dark-magenta: hsl(300, 43%, 22%);
-	--soft-pink: hsl(333, 80%, 67%);
+	--very-dark-magenta: hsl(300, 43%, 22%); /* title h1, .cards */
+	--soft-pink: hsl(333, 80%, 67%); /* .stati */
 
 	/* Neutral */
-	--dark-grayish-magenta: hsl(303, 10%, 53%);
-	--light-grayish-magenta: hsl(300, 24%, 96%);
+	--dark-grayish-magenta: hsl(303, 10%, 53%); /* title p */
+	--light-grayish-magenta: hsl(300, 24%, 96%); /* .ratings */
 	--white: hsl(0, 0%, 100%);
 
+	--breakpoint: 375px;
+	--max-card-width: 20em;
+	--gap: 1em;
+
+	font-size: 15px;
+
 	min-height: 100vh;
+	padding: var(--gap);
+	padding-top: calc(3 * var(--gap));
+	padding-bottom: 0;
+
+	display: grid;
+	justify-content: center;
+	grid-template-rows: 1fr auto;
 }
 
 main {
-	display: flex;
+	max-width: var(--max-card-width);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, min-content);
+	gap: calc(var(--gap) * 2);
 }
 
-.attribution {
-	font-size: 11px;
+/* ~~~~~~~~~~ TITLE ~~~~~~~~~~ */
+
+#title {
 	text-align: center;
 }
-.attribution a {
-	color: hsl(228, 45%, 44%);
+
+#title h1 {
+	font-size: 3em;
+	line-height: 1em;
+	color: var(--very-dark-magenta);
+	padding: 0.5em 0;
+}
+#title p {
+	color: var(--dark-grayish-magenta);
+}
+
+/* ~~~~~~~~~~ RATINGS ~~~~~~~~~~ */
+#ratings-container {
+	display: grid;
+	grid-template-columns: 1frs;
+	gap: var(--gap);
+}
+.ratings {
+	background-color: var(--light-grayish-magenta);
+	border-radius: 0.5em;
+	padding: var(--gap);
+	display: grid;
+	grid-template-columns: 1fr;
+	place-items: center;
+	gap: calc(var(--gap) / 2);
+}
+
+/* ~~~~~~~~~~ CARDS ~~~~~~~~~~ */
+
+#cards-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--gap);
+}
+
+.cards {
+	background-color: var(--very-dark-magenta);
+	color: var(--white);
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr 1fr min-content;
+	place-items: left;
+	padding: calc(var(--gap) * 2);
+	border-radius: 0.5rem;
+}
+
+.avatars {
+	grid-row: 1 / span 2;
+	margin-right: var(--gap);
+}
+.avatars img {
+	width: 3em;
+	border-radius: 50%;
+}
+
+.comments {
+	grid-column: 1 / span 2;
+	margin-top: var(--gap);
+}
+
+.names {
+	align-self: end;
+}
+
+.stati {
+	color: var(--soft-pink);
+	font-weight: 500;
+}
+
+/* ~~~~~~~~~~ FOOTER ~~~~~~~~~~ */
+footer {
+	position: relative;
+	bottom: 0;
+	font-size: 0.75em;
+	text-align: center;
 }
