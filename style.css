@@ -21,15 +21,13 @@ body {
 	--max-card-width: 20em;
 	--gap: 1em;
 
-	font-size: 15px;
+	/* font-size: 15px; */
 
 	min-height: 100vh;
-	padding: var(--gap);
-	padding-top: calc(3 * var(--gap));
-	padding-bottom: 0;
+	padding: 0 var(--gap);
+	justify-content: center;
 
 	display: grid;
-	justify-content: center;
 	grid-template-rows: 1fr auto;
 }
 
@@ -39,6 +37,8 @@ main {
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, min-content);
 	gap: calc(var(--gap) * 2);
+	margin-top: calc(3 * var(--gap));
+	margin-bottom: var(--gap);
 }
 
 /* ~~~~~~~~~~ TITLE ~~~~~~~~~~ */
@@ -55,6 +55,7 @@ main {
 }
 #title p {
 	color: var(--dark-grayish-magenta);
+	font-weight: 500;
 }
 
 /* ~~~~~~~~~~ RATINGS ~~~~~~~~~~ */
@@ -71,6 +72,7 @@ main {
 	grid-template-columns: 1fr;
 	place-items: center;
 	gap: calc(var(--gap) / 2);
+	color: var(--very-dark-magenta);
 }
 
 /* ~~~~~~~~~~ CARDS ~~~~~~~~~~ */
@@ -117,8 +119,83 @@ main {
 
 /* ~~~~~~~~~~ FOOTER ~~~~~~~~~~ */
 footer {
-	position: relative;
 	bottom: 0;
 	font-size: 0.75em;
 	text-align: center;
+}
+
+@media screen and (min-width: 50em) {
+	body {
+		font-size: 15px;
+	}
+
+	main {
+		max-width: calc(var(--max-card-width) * 3 + var(--gap) * 4);
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(2, min-content);
+		margin: auto 0;
+	}
+
+	#title {
+		margin-right: 20%;
+	}
+
+	#title h1 {
+		font-size: 3.5em;
+		letter-spacing: -0.05em;
+	}
+
+	#ratings-container {
+		align-self: center;
+		grid-template-rows: repeat(3, min-content);
+	}
+
+	.ratings {
+		padding: var(--gap);
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		place-items: unset;
+		align-items: center;
+		gap: calc(var(--gap) / 2);
+		width: 90%;
+	}
+
+	.ratings:nth-of-type(2) {
+		justify-self: center;
+	}
+
+	.ratings:nth-of-type(3) {
+		justify-self: end;
+	}
+
+	.stars {
+		margin: auto var(--gap);
+	}
+
+	#cards-container {
+		grid-column: 1 / span 2;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: 120%;
+		font-size: 0.95em;
+	}
+
+	.cards {
+		height: min-content;
+	}
+
+	.cards:nth-of-type(1) {
+		align-self: top;
+	}
+
+	.cards:nth-of-type(2) {
+		align-self: center;
+	}
+
+	.cards:nth-of-type(3) {
+		align-self: end;
+	}
+
+	#title {
+		text-align: unset;
+	}
 }
