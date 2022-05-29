@@ -29,6 +29,14 @@ body {
 
 	display: grid;
 	grid-template-rows: 1fr auto;
+
+	background-image: url(images/bg-pattern-top-mobile.svg),
+		url(images/bg-pattern-bottom-mobile.svg);
+	background-position: left, right;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	/* background-size: auto; */
 }
 
 main {
@@ -127,6 +135,11 @@ footer {
 @media screen and (min-width: 50em) {
 	body {
 		font-size: 15px;
+		background-image: url(images/bg-pattern-top-desktop.svg),
+			url(images/bg-pattern-bottom-desktop.svg);
+		background-position: top left, bottom right;
+		background-size: auto;
+		background-repeat: no-repeat;
 	}
 
 	main {
